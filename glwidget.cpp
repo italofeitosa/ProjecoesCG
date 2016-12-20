@@ -43,13 +43,15 @@ void GLWidget::paintGL()
     glLoadIdentity();
 
     //gluLookAt(5,0,5,0,0.5,0,0,1,0);
-    //gluLookAt(5,5,5,0,0,0,0,1,0); //projecaoOrtograficaIsometrica5();
+    //gluLookAt(5,5,5,0,0,0,0,1,0); //Questao 5
+    //gluLookAt(2,0,2,0,0,0,0,1,0); //questao 6
+    //gluLookAt(1,1,1,0,0,0,0,1,0); //questao 7
 
     //ang += 0.5;
 
     //glRotatef(ang,0,1,0);
-    glScalef(1, 1, 4); //Questão 8
-    glTranslatef(x,y,z);
+    //glScalef(1, 1, 4); //Questão 8
+    //glTranslatef(x,y,z);
 
     glColor3f(1,0,0);
     //wired=!wired;
@@ -63,62 +65,44 @@ void GLWidget::paintGL()
 /*### Questão 1*/
 void projecaoCavaleira1(){
     float cavalieraMatriz [4][4] = {{1,0,0,0},{0,1,0,0},{-cos(3.1415/4.0),-sin(3.1415/4.0),0,0},{0,0,0,1}};
+    glOrtho(-5, 5, -5, 5, -5, 5);
     glMultMatrixf(*cavalieraMatriz);
 
 }
 
-/*### Questão 2*/
-void projecaoCavaleiraObliqua2(){
-    float cavalieraMatriz [4][4] = {{1,0,0,0},{0,1,0,0},{-cos(3.1415/4.0),-sin(3.1415/4.0),0,0},{0,0,0,1}};
-    glOrtho(-5,5, -5, 5, -5,5);
+/*### Questão 2, 3 e 4*/
+void projecaoObliqua(float alpha, float l){
+
+    float cavalieraMatriz [4][4] = {{1,0,0,0},{0,1,0,0},{-cos(alpha/180*3.1415)*l,-sin(alpha/180*3.1415)*l,0,0},{0,0,0,1}};
+    glOrtho(-5, 5, -5, 5, -5, 5);
     glMultMatrixf(*cavalieraMatriz);
-
-}
-
-/*### Questão 3*/
-//Angulos 30, 45 e 60 (CAVALEIRA)
-void projecaoCavaleira3(double angulo){
-    float cavalieraMatriz [4][4] = {{1,0,0,0},{0,1,0,0},{-cos(angulo),-sin(angulo),0,0},{0,0,0,1}};
-    //glOrtho(-5,5, -5, 5, -5,5);
-    glMultMatrixf(*cavalieraMatriz);
-
-}
-
-/*### Questão 4*/
-//Angulos 30, 45 e 60 (CABINET)
-void projecaoCabinet4(double angulo){
-    float cabinetMatriz [4][4] = {{1.0,0.0,0.0,0.0},{0.0,1.0,0.0,0.0},{-cos(angulo)/2.0,-sin(angulo)/2,0.0,0.0},{0.0,0.0,0.0,1.0}};
-    //glOrtho(-5,5, -5, 5, -5,15);
-    glMultMatrixf(*cabinetMatriz);
 }
 
 /*### Questão 5*/
 //habilitar o gluLookAt
-void projecaoOrtograficaIsometrica5(double angulo){
-    float cabinetMatriz [4][4] = {{1.0,0.0,0.0,0.0},{0.0,1.0,0.0,0.0},{-cos(angulo)/2.0,-sin(angulo)/2,0.0,0.0},{0.0,0.0,0.0,1.0}};
-    glMultMatrixf(*cabinetMatriz);
+void projecaoOrtograficaIsometrica5(){
+
     glOrtho(-5,5, -5, 5, -5,15);
 }
 
 /*### Questão 6*/
-void projecaoPespectiva6(double angulo, int h, int w){
-    float cabinetMatriz [4][4] = {{1.0,0.0,0.0,0.0},{0.0,1.0,0.0,0.0},{-cos(angulo)/2.0,-sin(angulo)/2,0.0,0.0},{0.0,0.0,0.0,1.0}};
-    glMultMatrixf(*cabinetMatriz);
-    gluPerspective(90,h/w,5,15);
+void projecaoPespectiva6(){
+
+    gluPerspective(45,1,0.5,3);
+
 }
 
 /*### Questão 7*/
-void projecaoPerpectivaComparar7(double angulo, int h, int w){
-    float cabinetMatriz [4][4] = {{1.0,0.0,0.0,0.0},{0.0,1.0,0.0,0.0},{-cos(angulo)/2.0,-sin(angulo)/2,0.0,0.0},{0.0,0.0,0.0,1.0}};
-    glMultMatrixf(*cabinetMatriz);
-    gluPerspective(90,h/w, 5,-15);
+void projecaoPerpectivaComparar7(){
+
+   gluPerspective(60,1,0.5,20);
 }
 
 /*### Questão 8*/
 void transformacaoPara8(double angulo){
-    float cavalieraMatriz [4][4] = {{1,0,0,0},{0,1,0,0},{-cos(angulo),-sin(angulo),0,0},{0,0,0,1}};
-   // float cabinetMatriz [4][4] = {{1.0,0.0,0.0,0.0},{0.0,1.0,0.0,0.0},{-cos(angulo)/2.0,-sin(angulo)/2,0.0,0.0},{0.0,0.0,0.0,1.0}};
-    glMultMatrixf(*cavalieraMatriz);
+    //float cavalieraMatriz [4][4] = {{1,0,0,0},{0,1,0,0},{-cos(angulo),-sin(angulo),0,0},{0,0,0,1}};
+    float cabinetMatriz [4][4] = {{1.0,0.0,0.0,0.0},{0.0,1.0,0.0,0.0},{-cos(angulo)/2.0,-sin(angulo)/2,0.0,0.0},{0.0,0.0,0.0,1.0}};
+    glMultMatrixf(*cabinetMatriz);
     glOrtho(-5,5, -5, 5, -5, 15);
 }
 
@@ -132,24 +116,17 @@ void GLWidget::resizeGL(int w, int h)
     /*### Questão 1*/
     //projecaoCavaleira1();
 
-    /*### Questão 2*/
-    //projecaoCavaleiraObliqua2();
+    /*### Questão 2, 3 e 4*/
+    //projecaoObliqua(45,1);
 
-    /*### Questão 3*/
-    //projecaoCavaleira3(ang45);
+    /*### Questão 5 - habilitar o LookAt 5*/
+//    /projecaoOrtograficaIsometrica5();
 
-    //CABINET
-    /*### Questão 4*/
-    //projecaoCabinet4(ang45);
+    /*### Questão 6 - habilitar o LookAt 6*/
+    //projecaoPespectiva6();
 
-    /*### Questão 5*/
-    //projecaoOrtograficaIsometrica5(ang60);
-
-    /*### Questão 6*/
-    //projecaoPespectiva6(ang60,h,w);
-
-    /*### Questão 7*/
-    //projecaoPerpectivaComparar7(ang60,h,w);
+    /*### Questão 7- habilitar o LookAt 7*/
+    //projecaoPerpectivaComparar7();
 
     /*### Questão 8*/
     //transformacaoPara8(ang45);
