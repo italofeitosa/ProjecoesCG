@@ -1,0 +1,14 @@
+//CAVALIER
+    //float cavalierMatrix [4][4] = {{1,0,0,0},{0,1,0,0},{-cos(3.1415/4.0),-sin(3.1415/4.0),0,0},{0,0,0,1}};
+    //float cavalierMatrix [16] = {1,0,0,0,0,1,0,0,cos(3.1415/6.0),sin(3.1415/6.0),0,0,0,0,0,1};
+    //glOrtho(-5,5, -5, 5, -5,15);
+    //glOrtho(-5,5, -5, 5, -5,5);
+    //float cavalierMatrix [4][4] = {{1,0,0,0},{0,1,0,0},{-cos(3.1415/4.0),-sin(3.1415/4.0),0,0},{0,0,0,1}};
+    //glMultMatrixf(*cavalierMatrix);
+
+    //CABINET
+    //float cabinetMatrix [4][4] = {{1.0,0.0,0.0,0.0},{0.0,1.0,0.0,0.0},{-cos(3.1415/4.0)/2.0,-sin(3.1415/4.0)/2,0.0,0.0},{0.0,0.0,0.0,1.0}};
+    //glLoadMatrixf(*cabinetMatrix);
+    //glMultMatrixf(*cabinetMatrix);
+    //gluPerspective(90,h/w,5,15);
+    //glOrtho(-5,5, -5, 5, -5,15);
