@@ -47,13 +47,16 @@ void GLWidget::paintGL()
     //gluLookAt(2,0,2,0,0,0,0,1,0); //questao 6
     //gluLookAt(1,1,1,0,0,0,0,1,0); //questao 7
 
+    //gluLookAt(5,5,20,0,0,0,0,1,0); //Questao 8 2)
+    //gluLookAt(2,0,8,0,0,0,0,1,0); //questao 8 4)
+
     //ang += 0.5;
 
-    //glRotatef(ang,0,1,0);
+    //glRotatef(ang,0,5,0);
     //glScalef(1, 1, 4); //Questão 8
     //glTranslatef(x,y,z);
 
-    glColor3f(1,0,0);
+    glColor3f(0,1,0);
     //wired=!wired;
     if(wired)
         glutWireCube(R);
@@ -86,25 +89,42 @@ void projecaoOrtograficaIsometrica5(){
 }
 
 /*### Questão 6*/
+//habilitar o gluLookAt
 void projecaoPespectiva6(){
 
-    gluPerspective(45,1,0.5,3);
+    //gluPerspective(45,1,0.5,3);
+    gluPerspective(45,1,0.5,4);
 
 }
 
 /*### Questão 7*/
+//habilitar o gluLookAt
 void projecaoPerpectivaComparar7(){
 
    gluPerspective(60,1,0.5,20);
 }
 
 /*### Questão 8*/
-void transformacaoPara8(double angulo){
-    //float cavalieraMatriz [4][4] = {{1,0,0,0},{0,1,0,0},{-cos(angulo),-sin(angulo),0,0},{0,0,0,1}};
-    float cabinetMatriz [4][4] = {{1.0,0.0,0.0,0.0},{0.0,1.0,0.0,0.0},{-cos(angulo)/2.0,-sin(angulo)/2,0.0,0.0},{0.0,0.0,0.0,1.0}};
-    glMultMatrixf(*cabinetMatriz);
-    glOrtho(-5,5, -5, 5, -5, 15);
+//habilitar o gluLookAt
+void transformacaoPara8(double alpha, double l){
+
+    //1)Visão Frontal
+
+    //2) Visão Isométrica
+    //glOrtho(-5,5, -5, 5, -5,40);
+
+    //3) Projeção Cavaleira com alfa = 30°
+//    float Matriz [4][4] = {{1,0,0,0},{0,1,0,0},{-cos(alpha/180*3.1415)*l,-sin(alpha/180*3.1415)*l,0,0},{0,0,0,1}};
+//    glOrtho(-5, 5, -5, 5, -5, 20);
+//    glMultMatrixf(*Matriz);
+
+    //4) Projeção pespectiva com dois ponto de fuga
+    gluPerspective(45,1,1,16);
+
+
+
 }
+
 
 void GLWidget::resizeGL(int w, int h)
 {
@@ -117,19 +137,19 @@ void GLWidget::resizeGL(int w, int h)
     //projecaoCavaleira1();
 
     /*### Questão 2, 3 e 4*/
-    //projecaoObliqua(45,1);
+    projecaoObliqua(60, 0.5);
 
     /*### Questão 5 - habilitar o LookAt 5*/
-//    /projecaoOrtograficaIsometrica5();
+    //projecaoOrtograficaIsometrica5();
 
     /*### Questão 6 - habilitar o LookAt 6*/
     //projecaoPespectiva6();
 
-    /*### Questão 7- habilitar o LookAt 7*/
+    /*### Questão 7 - habilitar o LookAt 7*/
     //projecaoPerpectivaComparar7();
 
-    /*### Questão 8*/
-    //transformacaoPara8(ang45);
+    /*### Questão 8 - habilitar o LookAt 8*/
+    //transformacaoPara8(30, 1);
 
 
     glClearColor(0.0f,0.0f,0.0f,0.0f);
