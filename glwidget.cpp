@@ -53,7 +53,7 @@ void GLWidget::paintGL()
     //ang += 0.5;
 
     //glRotatef(ang,0,5,0);
-    //glScalef(1, 1, 4); //Questão 8
+    glScalef(1, 1, 4); //Questão 8
     //glTranslatef(x,y,z);
 
     glColor3f(0,1,0);
@@ -109,6 +109,7 @@ void projecaoPerpectivaComparar7(){
 void transformacaoPara8(double alpha, double l){
 
     //1)Visão Frontal
+     glOrtho(-5, 5, -5, 5, 0, 15);
 
     //2) Visão Isométrica
     //glOrtho(-5,5, -5, 5, -5,40);
@@ -119,7 +120,7 @@ void transformacaoPara8(double alpha, double l){
 //    glMultMatrixf(*Matriz);
 
     //4) Projeção pespectiva com dois ponto de fuga
-    gluPerspective(45,1,1,16);
+    //gluPerspective(45,1,1,16);
 
 
 
@@ -137,7 +138,7 @@ void GLWidget::resizeGL(int w, int h)
     //projecaoCavaleira1();
 
     /*### Questão 2, 3 e 4*/
-    projecaoObliqua(60, 0.5);
+    //projecaoObliqua(60, 0.5);
 
     /*### Questão 5 - habilitar o LookAt 5*/
     //projecaoOrtograficaIsometrica5();
@@ -149,7 +150,7 @@ void GLWidget::resizeGL(int w, int h)
     //projecaoPerpectivaComparar7();
 
     /*### Questão 8 - habilitar o LookAt 8*/
-    //transformacaoPara8(30, 1);
+    transformacaoPara8(30, 1);
 
 
     glClearColor(0.0f,0.0f,0.0f,0.0f);
